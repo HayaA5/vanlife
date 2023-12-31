@@ -1,6 +1,7 @@
-import { Link, NavLink } from "react-router-dom"
+import React from "react"
+import { NavLink, Outlet } from "react-router-dom"
 
-export default function Header() {
+export default function HostLayout() {
     const activeStyles = {
         fontWeight: "bold",
         textDecoration: "underline",
@@ -8,28 +9,39 @@ export default function Header() {
     }
 
     return (
-        <header>
-            <Link className="site-logo" to="/">#VanLife</Link>
-            <nav>
+        <>
+            <nav className="host-nav">
                 <NavLink
-                    to="/host"
+                    to="."
+                    end
                     style={({ isActive }) => isActive ? activeStyles : null}
                 >
-                    Host
+                    Dashboard
                 </NavLink>
+
                 <NavLink
-                    to="/about"
+                    to="income"
                     style={({ isActive }) => isActive ? activeStyles : null}
                 >
-                    About
+                    Income
                 </NavLink>
+
                 <NavLink
-                    to="/vans"
+                    to="vans"
                     style={({ isActive }) => isActive ? activeStyles : null}
                 >
                     Vans
                 </NavLink>
+
+                <NavLink
+                    to="reviews"
+                    style={({ isActive }) => isActive ? activeStyles : null}
+                >
+                    Reviews
+                </NavLink>
+
             </nav>
-        </header>
+            <Outlet />
+        </>
     )
 }
