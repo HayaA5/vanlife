@@ -1,9 +1,9 @@
-import React from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 export default function Vans() {
-    const [vans, setVans] = React.useState([])
-    React.useEffect(() => {
+    const [vans, setVans] = useState([])
+    useEffect(() => {
         fetch("/api/vans")
             .then(res => res.json())
             .then(data => setVans(data.vans))
